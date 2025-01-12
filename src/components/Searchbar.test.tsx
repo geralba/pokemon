@@ -4,11 +4,18 @@ import React from 'react';
 import { Searchbar } from './Searchbar';
 
 describe('Searchbar Component', () => {
+  it('renders the heading with the correct text', () => {
+    const mockSetSearchText = jest.fn();
+    render(<Searchbar searchText='' setSearchText={mockSetSearchText} />);
+
+    const heading = screen.getByText('Find your Pokemon');
+    expect(heading).toBeInTheDocument();
+  });
+
   it('renders the Searchbar with the correct placeholder', () => {
     const mockSetSearchText = jest.fn();
     render(<Searchbar searchText='' setSearchText={mockSetSearchText} />);
 
-    // Check for the placeholder
     const input = screen.getByPlaceholderText('Search by name or ID');
     expect(input).toBeInTheDocument();
   });
@@ -16,11 +23,10 @@ describe('Searchbar Component', () => {
   it('displays the input value correctly', () => {
     const mockSetSearchText = jest.fn();
     render(
-      <Searchbar searchText='Pikachu' setSearchText={mockSetSearchText} />,
+      <Searchbar searchText='Charmander' setSearchText={mockSetSearchText} />,
     );
 
-    // Check if the input value is displayed correctly
-    const input = screen.getByDisplayValue('Pikachu');
+    const input = screen.getByDisplayValue('Charmander');
     expect(input).toBeInTheDocument();
   });
 
@@ -28,20 +34,9 @@ describe('Searchbar Component', () => {
     const mockSetSearchText = jest.fn();
     render(<Searchbar searchText='' setSearchText={mockSetSearchText} />);
 
-    // Simulate typing into the input
     const input = screen.getByPlaceholderText('Search by name or ID');
-    fireEvent.change(input, { target: { value: 'Bulbasaur' } });
+    fireEvent.change(input, { target: { value: 'Charmander' } });
 
-    // Check if setSearchText is called with the new value
-    expect(mockSetSearchText).toHaveBeenCalledWith('Bulbasaur');
-  });
-
-  it('renders the heading with the correct text', () => {
-    const mockSetSearchText = jest.fn();
-    render(<Searchbar searchText='' setSearchText={mockSetSearchText} />);
-
-    // Check if the heading is rendered with the correct text
-    const heading = screen.getByText('Find your Pokemon');
-    expect(heading).toBeInTheDocument();
+    expect(mockSetSearchText).toHaveBeenCalledWith('Charmander');
   });
 });

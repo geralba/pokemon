@@ -21,7 +21,7 @@ export const Searchbar: React.FC<SearchbarProps> = ({
       >
         Find your Pokemon
       </h2>
-      <div className='w-full mx-10 max-w-2xl gap-5 flex items-center min-h-12  bg-white border-2 border-burgundy rounded-xl mt-6 mb-4 px-5 '>
+      <div className='w-full mx-10 max-w-2xl gap-5 flex items-center min-h-12  bg-white border-2 border-burgundy rounded-xl mt-6 mb-4 px-1 '>
         <input
           className=' w-full flex-1 border-none  focus:ring-0   text-saddlebrown placeholder-saddlebrown'
           type='text'
