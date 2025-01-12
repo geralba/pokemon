@@ -1,9 +1,5 @@
-import '../styles/globals.css';
+import HomeContent from '@/app/HomeContent';
 
 export default function HomePage() {
-  return (
-    <>
-      <h1>This is homePage</h1>
-    </>
-  );
+  return <HomeContent />;
 }
