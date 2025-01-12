@@ -12,7 +12,7 @@ jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock('@/components/ScrollPokemon', () => ({
+jest.mock('@/app/ScrollPokemon', () => ({
   ScrollPokemon: ({ pokemons }: { pokemons: Array<{ name: string }> }) => (
     <div>
       {pokemons.map((pokemon, index) => (

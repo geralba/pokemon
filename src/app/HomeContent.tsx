@@ -6,9 +6,9 @@ import '../styles/globals.css';
 import { useFetchPokemon } from '@/hooks/useFetchPokemon';
 
 import { PokemonList } from '@/components/PokemonList';
-import { ScrollPokemon } from '@/components/ScrollPokemon';
 
 import { HomeHero } from '@/app/HomeHero';
+import { ScrollPokemon } from '@/app/ScrollPokemon';
 
 export default function HomeContent() {
   const { pokemonData } = useFetchPokemon();
