@@ -1,10 +1,9 @@
-'use client';
 import { Pokemon, PokemonResponse } from '@/interfaces/pokeon';
 
-const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0';
+const baseUrl = 'https://pokeapi.co/api/v2/';
 export const fetchPokemons = async () => {
   try {
-    const response = await fetch(baseUrl);
+    const response = await fetch(baseUrl + 'pokemon?limit=20&offset=0');
     if (!response.ok) {
       throw new Error('Oh no! The Poké Ball failed. Try again!');
     }
@@ -29,6 +28,7 @@ export const fetchPokemons = async () => {
             },
           },
           types: pokemonDetails.types,
+          id: pokemonDetails.id,
         };
       },
     );
@@ -46,4 +46,10 @@ export const fetchPokemons = async () => {
     }
     return [];
   }
+};
+
+export const getPokemon = async (name: string) => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  const data = await response.json();
+  return data;
 };

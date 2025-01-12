@@ -1,4 +1,5 @@
 import Link, { LinkProps } from 'next/link';
+import { useRouter } from 'next/navigation';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
@@ -13,6 +14,20 @@ export type UnstyledLinkProps = {
 
 const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
   ({ children, href, openNewTab, className, nextLinkProps, ...rest }, ref) => {
+    const router = useRouter();
+
+    if (href === 'back') {
+      return (
+        <button
+          type='button'
+          onClick={() => router.back()}
+          className={cn('cursor-pointer', className)}
+          {...(rest as React.ComponentPropsWithoutRef<'button'>)}
+        >
+          {children}
+        </button>
+      );
+    }
     const isNewTab =
       openNewTab !== undefined
         ? openNewTab

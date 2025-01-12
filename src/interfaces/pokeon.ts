@@ -37,4 +37,5 @@ export interface PokemonDetails extends Pokemon {
   stats: Stat[];
   sprites: Sprites;
   types: Type[];
+  id: number;
 }
