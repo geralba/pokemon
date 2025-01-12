@@ -11,7 +11,7 @@ import { HomeHero } from '@/app/HomeHero';
 import { ScrollPokemon } from '@/app/ScrollPokemon';
 
 export default function HomeContent() {
-  const { pokemonData } = useFetchPokemon();
+  const { pokemonData, loading } = useFetchPokemon();
   return (
     <>
       <HomeHero />
@@ -26,7 +26,12 @@ export default function HomeContent() {
         </h2>
       </div>
 
-      <PokemonList startIndex={8} endIndex={15} />
+      <PokemonList
+        startIndex={8}
+        endIndex={15}
+        pokemonData={pokemonData}
+        loading={loading}
+      />
 
       <div className='flex justify-center my-3'>
         <Image
