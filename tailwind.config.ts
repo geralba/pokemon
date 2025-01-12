@@ -40,6 +40,7 @@ export default {
         burgundy: '#800020',
         bisque: '#FFE4C4',
         curtsy: '#FFD7B7',
+        coral: '#f08383',
         background: '#ffe4bb',
         foreground: 'hsl(var(--foreground))',
         card: {
