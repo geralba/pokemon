@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import { TogglePokemonButton } from '@/components/buttons/TogglePokemonButton';
+
 import { PokemonDetails } from '@/interfaces/pokeon';
 
 interface PokemonCardProps {
@@ -16,9 +18,11 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
   };
   return (
     <button
+      data-testid='details-button'
       className='w-full  flex flex-col items-center  max-w-64 min-w-60 h-auto border-4 border-red-900 m-5 bg-curtsy hover:bg-primary-100'
       onClick={handleDetails}
     >
+      <TogglePokemonButton pokemon={pokemon} />
       <h2 className='text-primary-900'>
         {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
       </h2>
@@ -28,7 +32,9 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
         width={200}
         height={200}
       />
-      <p>{pokemon.types.map((type) => type.type.name).join(' ')}</p>
+      <p className='text-base font-bold text-primary-800'>
+        {pokemon.types.map((type) => type.type.name).join(' ')}
+      </p>
     </button>
   );
 };

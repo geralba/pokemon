@@ -9,10 +9,19 @@ export const HomeHero: React.FC = () => {
     router.push('/allPokemons');
   };
 
+  const navigateToTrainersPage = () => {
+    router.push('/trainers');
+  };
   return (
     <div className='w-full min-h-80 bg-home-pattern bg-center bg-cover backdrop-blur'>
       <div className='absolute inset-0 flex justify-center items-center text-center'>
         <div className='text-white'>
+          <button
+            className=' absolute top-0 text-base right-0 mt-4 mr-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-amber-400 hover:text-burgundy'
+            onClick={navigateToTrainersPage}
+          >
+            Team
+          </button>
           <h1
             className='text-shadow-hometext text-red-900 py-4 px-8 font-bold text-responsive-title'
             style={{
@@ -24,7 +33,7 @@ export const HomeHero: React.FC = () => {
           </h1>
 
           <button
-            className='text-base text-orange-100 bg-red-900 rounded font-bold py-2 border-2 border-red-900 hover:bg-red-800 hover:text-primary-100 sm:text-xl px-3 mt-4'
+            className='text-base text-orange-100 bg-red-900 rounded font-bold py-2 border-2 border-red-900 hover:bg-amber-400 hover:text-burgundy sm:text-xl px-3 mt-4'
             onClick={handleButton}
           >
             Start
