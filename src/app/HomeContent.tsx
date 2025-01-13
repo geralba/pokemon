@@ -28,7 +28,7 @@ export default function HomeContent() {
 
       <PokemonList
         startIndex={8}
-        endIndex={15}
+        endIndex={16}
         pokemonData={pokemonData}
         loading={loading}
       />

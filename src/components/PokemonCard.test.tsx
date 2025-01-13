@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PokemonCard } from '@/components/PokemonCard';
 
@@ -9,12 +10,21 @@ jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
 }));
 
+jest.mock('react-redux', () => ({
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
+
 describe('PokemonCard', () => {
   const mockPush = jest.fn();
 
   beforeEach(() => {
     mockPush.mockReset();
     (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+
+    // Explicitly cast useSelector as jest.Mock
+    (useSelector as unknown as jest.Mock).mockReturnValue([]);
+    (useDispatch as unknown as jest.Mock).mockReturnValue([]);
   });
 
   const mockPokemon: PokemonDetails = {
@@ -53,9 +63,11 @@ describe('PokemonCard', () => {
   });
 
   it('navigates to the Pokémon details page when clicked', () => {
+    (useSelector as unknown as jest.Mock).mockReturnValue([]);
+
     render(<PokemonCard pokemon={mockPokemon} />);
 
-    fireEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByTestId('details-button'));
 
     expect(mockPush).toHaveBeenCalledWith('/pokemon/charmander');
   });
